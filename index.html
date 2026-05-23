@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow - A classic, minimal todo list web application designed for fast, clean, and distraction-free productivity.">
+  <title>TaskFlow // Minimalist Productivity Workspace</title>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Primary Application Card -->
+  <main class="app-container">
+    
+    <!-- Top Navbar & Date Widget -->
+    <header class="navbar">
+      <div class="logo-section">
+        <div class="logo-icon" aria-hidden="true">
+          <!-- Classic tick icon SVG -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h1 class="logo-text">Task<span>Flow</span></h1>
+      </div>
+      <div class="time-widget">
+        <span id="current-time">00:00:00 AM</span>
+        <span id="current-date">Saturday, May 23</span>
+      </div>
+    </header>
+
+    <!-- Productivity Progress & Statistics -->
+    <section class="stats-panel" aria-label="Productivity Progress">
+      <div class="stats-header">
+        <h2 class="stats-title">Progress Tracker</h2>
+        <span id="completion-percentage" class="stats-percentage">0%</span>
+      </div>
+      
+      <!-- Classic solid progress bar -->
+      <div class="progress-bar-container">
+        <div id="progress-bar-fill" class="progress-bar-fill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      
+      <!-- Numerical summary metrics -->
+      <div class="stats-numerical">
+        <div class="stat-item">
+          <span class="stat-dot dot-all"></span>
+          <span>Total: <strong id="total-count">0</strong></span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-dot dot-pending"></span>
+          <span>Pending: <strong id="pending-count">0</strong></span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-dot dot-completed"></span>
+          <span>Completed: <strong id="completed-count">0</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Task Input Form Section -->
+    <section class="todo-form-section" aria-label="Add New Task">
+      <form id="todo-form" class="todo-form" novalidate>
+        <div class="input-container">
+          <input 
+            type="text" 
+            id="todo-input" 
+            placeholder="Capture your next priority..." 
+            autocomplete="off"
+            autocapitalize="sentences"
+            autocorrect="on"
+            maxlength="120"
+            required
+            aria-label="Add a new task"
+          >
+          <button type="submit" class="btn-add" id="btn-add" aria-label="Add Task Button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Filters & Action Commands -->
+    <section class="controls-bar" aria-label="Task Filters">
+      <div class="filter-group" role="group" aria-label="Filter tasks">
+        <button class="btn-filter active" data-filter="all" id="filter-all">All</button>
+        <button class="btn-filter" data-filter="pending" id="filter-pending">Pending</button>
+        <button class="btn-filter" data-filter="completed" id="filter-completed">Completed</button>
+      </div>
+      <button class="btn-clear-completed" id="btn-clear-completed" disabled>
+        Clear Completed
+      </button>
+    </section>
+
+    <!-- Dynamic Todo List viewport -->
+    <section class="todo-list-wrapper" aria-label="Task List">
+      <ul class="todo-list" id="todo-list" role="list">
+        <!-- Rendered items injected dynamically by app.js -->
+      </ul>
+
+      <!-- Empty State Element -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon-wrapper" aria-hidden="true">
+          <!-- Flow/Queue empty list SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="9" x2="15" y2="9"></line>
+            <line x1="9" y1="13" x2="15" y2="13"></line>
+            <line x1="9" y1="17" x2="13" y2="17"></line>
+          </svg>
+        </div>
+        <h3 class="empty-title">Queue is clear</h3>
+        <p class="empty-text">Add some tasks or focus goals above to kickstart your day.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer productivity quote container -->
+  <footer class="footer">
+    <p class="quote-text" id="quote-text">"The secret of getting ahead is getting started."</p>
+    <span class="quote-author" id="quote-author">Mark Twain</span>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
